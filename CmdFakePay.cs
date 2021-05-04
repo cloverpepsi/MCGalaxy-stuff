@@ -10,7 +10,7 @@ namespace MCGalaxy.Commands.Eco {
             if (args.Length < 2) { Help(p); return; }
 
             int money = 0;
-            if (!CommandParser.GetInt(p, args[1], "Amount", ref money, 1)) return;
+            if (!CommandParser.GetInt(p, args[1], "Amount", ref money, 0)) return;
 
             int money2 = p.money;
 			if (money2 < money) {
