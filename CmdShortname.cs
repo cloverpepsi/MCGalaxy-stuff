@@ -9,14 +9,13 @@ namespace Core {
 	public sealed class CmdShortname : Command2 {
 		public override string name { get { return "Shortname"; } }
         public override string shortcut { get { return "Shortnick"; } }
-        public override string type { get { return "Other"; } }
+        public override string type { get { return "Chat"; } }
 
 		public override void Use(Player p, string message) {
             string[] args = message.SplitSpaces(2);
-        	if (args.Length < 1) { Help(p); return; }
-//this string just defines what flairs are valid. You can change this if you want less valid flairs. Just put the flairs in seperate quotes with commans in between.
-            string[] valid = {"░","▓","│","┤","╡","╢","╢","╕","╣","║","╗","╝","╜","╛","┐","└","╤","╨","╧","╬","═","╠","╦","╩","╔","╚","╟","╞","─","┼","├","┴","╥","╙","╘","╒","╓","╫","╪","┘","┌","█","▄","▐","☺","☻","♥","♦","♦","♠","♂","♀","♫","∞"};
-            List<string> validList = new List<string>(valid);  
+        	if (args[0] == "") { Command.Find("Nick").Use(p, "-own"); return; }
+//edit text/ValidFlairs.txt to change the flars you cna use
+            List<string> validList = Utils.ReadAllLinesList("text/ValidFlairs.txt");
             
             if (args.Length > 1) {string nick = args[1];
        		string UncoloredNick = Regex.Replace(nick, @"%.", "");
@@ -52,7 +51,7 @@ namespace Core {
         else {p.Message("%cNew name must be part of original name.");}}
         } 
             public override void Help(Player p ) {
-            p.Message("&a/Shortname [name] <flair>");
+            p.Message("&a/Shortname <flair> [name]");
            	p.Message("&eSets your nick to [name]. You can include a flair if you want.");
     }
     }
