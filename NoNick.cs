@@ -23,7 +23,7 @@ namespace myServer {
     void OnPlrCommand(Player subject, string cmd, string message, CommandData data) {
        if (subject.group.Permission >= LevelPermission.Operator) { return; }
 
-       if(cmd.CaselessEq("nick") && data.Context != CommandContext.MessageBlock){
+       if(cmd.CaselessEq("nick")){
 	          
        
           subject.Message("&cYou can't use /nick. Try /shortname instead.");
