@@ -14,7 +14,7 @@ namespace Core {
 		public override void Use(Player p, string message) {
             string[] args = message.SplitSpaces(2);
         	if (args[0] == "") { Command.Find("Nick").Use(p, "-own"); return; }
-//edit text/ValidFlairs.txt to change the flars you can use
+//edit text/ValidFlairs.txt to change the flairs you can use. Note that ValidFlairs.txt must be saved in UTF-8 encoding.
             List<string> validList = Utils.ReadAllLinesList("text/ValidFlairs.txt");
             
             if (args.Length > 1) {string nick = args[1];
