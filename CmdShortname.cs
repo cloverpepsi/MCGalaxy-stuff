@@ -13,25 +13,24 @@ namespace Core {
 
 		public override void Use(Player p, string message) {
             string[] args = message.SplitSpaces(2);
+		int minLength = 3;
         	if (args[0] == "") { Command.Find("Nick").Use(p, "-own"); return; }
-//edit text/ValidFlairs.txt to change the flairs you can use. Note that ValidFlairs.txt must be saved in UTF-8 encoding.
-            List<string> validList = Utils.ReadAllLinesList("text/ValidFlairs.txt");
-            
+//edit text/ValidFlairs.txt to change the flairs you can use. Note that ValidFlairs.txt must be saved in UTF-8 encoding
+	    List<string> validList = Utils.ReadAllLinesList("text/ValidFlairs.txt");
             if (args.Length > 1) {string nick = args[1];
        		string UncoloredNick = Regex.Replace(nick, @"%.", "");
 
              string flair = args[0]; 
         	 string UncoloredFlair = Regex.Replace(flair, @"%.", "");
-        if(UncoloredFlair.Length > 1) {p.Message("%cYour flair can only be 1 character."); return;}
         if(!(validList.Contains(UncoloredFlair))) {p.Message("%cYou are using an invalid flair."); return;}
             
         if((p.name).CaselessContains(UncoloredNick))  {
 //you can set the 3 here to be any number. Just make sure to change the error message.
-        if(UncoloredNick.Length >= 3) {
+        if(UncoloredNick.Length >= minLength) {
         Command.Find("Nick").Use(p, "-own " + flair + " " + nick);
         
         }
-     	else {p.Message("%cYou need to have your name be 3 characters or longer.");}
+     	else {p.Message("%cYou need to have your name be "+ minLength.ToString() +" characters or longer.");}
         }
             
         else {p.Message("%cNew name must be part of original name.");}
@@ -44,7 +43,7 @@ namespace Core {
 //same thing here. Just make sure to change all the threes.
 
            if(UncoloredNick.Length >= 3) {Command.Find("Nick").Use(p, "-own " + nick);}
-     	    else {p.Message("%cYou need to have your name be 3 characters or longer.");}
+     	    else {p.Message("%cYou need to have your name be "+ minLength.ToString() +" characters or longer.");}
      
         }
             
@@ -56,5 +55,4 @@ namespace Core {
     }
     }
 }
-    
-        
+   
