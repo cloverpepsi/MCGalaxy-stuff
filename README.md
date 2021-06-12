@@ -10,3 +10,4 @@ A place where I keep all my "custom" MCGalaxy commands/plugins
 | CmdGtfo | A command that blacklists people from a map, undoes their changes, warns them, and sends them a message in their inbox. (coded from scratch!) |
 | CmdShortname | A command that lets people set their nick to part of their actual name. They can also add an optional flair before it. **USED WITH BOTNICK AND NONICK!!** (coded from scratch!) |
 | CmdBotnick | A command that allows people to change a bot's nick. **USED WITH SHORTNAME AND NONICK!!** (coded from scratch!) |
+| CmdCustomhug| A command that lets people make any kind of hug they want. (coded from scratch!) |
